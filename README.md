@@ -49,9 +49,9 @@ reap('http://stackoverflow.com/?tab=hot')
 		views: '.views .mini-counts'
 	})
 	.transform({
-		question: reap.t.lowercase(),
-		url: reap.t.prefix('http://stackoverflow.com'),
-		views: reap.t.int()
+		question: reap.t().lowercase(),
+		url: reap.t.()prefix('http://stackoverflow.com'),
+		views: reap.t.()int()
 	})
 	.then(console.log);
 ```
@@ -70,31 +70,41 @@ results
     views: 18 }, .... ]
 ```
 
+Also you can chain transforms
+
+```js
+	...
+	.transform({
+		summary: reap.t().lowercase().trim()
+	})
+	...
+```
+
 ## Transforms
 
 `reap.transforms` contains basic transforms functions
 
-#### reap.transforms.tream()
+#### reap.t().tream()
 
 Tream field value
 
-#### reap.transforms.prefix(string)
+#### reap.t().prefix(string)
 
 Prepend string to field value
 
-#### reap.transforms.postfix(string)
+#### reap.t().postfix(string)
 
 Append string to field value
 
-#### reap.transforms.lowercase()
+#### reap.t().lowercase()
 
 Lowercase field value
 
-#### reap.transforms.int()
+#### reap.t().int()
 
 Typecase field value to `int`
 
-#### reap.transforms.float()
+#### reap.t().float()
 
 Typecase field value to `float`
 
