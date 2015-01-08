@@ -1,0 +1,27 @@
+{
+  "name": "great-reaper",
+  "version": "0.1.0",
+  "description": "Scrap and collect data from urls, html, json and stuff..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scrapper",
+    "scrap",
+    "crawler",
+    "collect",
+    "data",
+    "reaper",
+    "parser",
+    "crawl"
+  ],
+  "author": "Egor Gumenyuk <boo1ean0807@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.6.2",
+    "cheerio": "^0.18.0",
+    "lodash": "^2.4.1",
+    "request": "^2.51.0"
+  }
+}
