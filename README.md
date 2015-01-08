@@ -34,6 +34,97 @@ results
     url: 'https://medium.com/@Amp/cant-you-just-turn-up-the-volume-4ecb7fc422a' } ]
 ```
 
+## Use transforms
+
+Get hot questions from stackoverflow with urls.
+
+Initially question links are relative so we should make them absolute to get correct urls.
+
+```js
+reap('http://stackoverflow.com/?tab=hot')
+	.group('.question-summary')
+	.map({
+		question: '.question-hyperlink',
+		url: '.question-hyperlink@href',
+		views: '.views .mini-counts'
+	})
+	.transform({
+		question: reap.t.lowercase(),
+		url: reap.t.prefix('http://stackoverflow.com'),
+		views: reap.t.int()
+	})
+	.then(console.log);
+```
+
+results
+
+```js
+[ { question: 'program breaks from switch java',
+    url: 'http://stackoverflow.com/questions/27840619/program-breaks-from-switch-java',
+    views: 49 },
+  { question: 'what is the z at the end of date',
+    url: 'http://stackoverflow.com/questions/27840670/what-is-the-z-at-the-end-of-date',
+    views: 28 },
+  { question: 'convert array of objects into object',
+    url: 'http://stackoverflow.com/questions/27840109/convert-array-of-objects-into-object',
+    views: 18 }, .... ]
+```
+
+## Transforms
+
+`reap.transforms` contains basic transforms functions
+
+#### reap.transforms.tream()
+
+Tream field value
+
+#### reap.transforms.prefix(string)
+
+Prepend string to field value
+
+#### reap.transforms.postfix(string)
+
+Append string to field value
+
+#### reap.transforms.lowercase()
+
+Lowercase field value
+
+#### reap.transforms.int()
+
+Typecase field value to `int`
+
+#### reap.transforms.float()
+
+Typecase field value to `float`
+
+## Custom transforms
+
+You can use custom transform function:
+
+```js
+	...
+	.transform(function (item) {
+		if (item.type === 'good') {
+			item.status = 'good item';
+		}
+
+		return item;
+	})
+	...
+```
+
+Or apply transform for specific field
+
+```js
+	...
+	.transform({
+		status: function (val) {
+			return 'status: ' + val.toLowerCase();
+		}
+	});
+```
+
 ## LICENSE
 
 MIT
