@@ -100,6 +100,18 @@ Append string to field value
 
 Lowercase field value
 
+#### reap.t().slice(from, to)
+
+Slices field value same as `string.slice`
+
+#### reap.t().split(separator)
+
+Split string using given separator and returns array
+
+#### reap.t().join(glue)
+
+Joins array using given glue and returns string
+
 #### reap.t().int()
 
 Typecase field value to `int`
