@@ -1,6 +1,6 @@
 {
   "name": "great-reaper",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Scrap and collect data from urls, html, json and stuff..",
   "main": "index.js",
   "scripts": {
