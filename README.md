@@ -50,8 +50,8 @@ reap('http://stackoverflow.com/?tab=hot')
 	})
 	.transform({
 		question: reap.t().lowercase(),
-		url: reap.t.()prefix('http://stackoverflow.com'),
-		views: reap.t.()int()
+		url: reap.t.().prefix('http://stackoverflow.com'),
+		views: reap.t.().int()
 	})
 	.then(console.log);
 ```
@@ -144,7 +144,32 @@ Or apply transform for specific field
 		status: function (val) {
 			return 'status: ' + val.toLowerCase();
 		}
-	});
+	})
+	...
+```
+
+## Filter results
+
+Filters allows you to filter out redundant items from collection
+
+```js
+	...
+	.filter(function (item) {
+		return item.type === 'good';
+	})
+	...
+```
+
+property specific filters:
+
+```js
+	...
+	.filter({
+		type: function (type) {
+			return type === 'good';
+		}
+	})
+	...
 ```
 
 ## LICENSE
