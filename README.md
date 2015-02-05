@@ -34,7 +34,31 @@ results
     url: 'https://medium.com/@Amp/cant-you-just-turn-up-the-volume-4ecb7fc422a' } ]
 ```
 
-## Use transforms
+## Filters
+
+Filters allows you to filter out redundant items from collection
+
+```js
+	...
+	.filter(function (item) {
+		return item.type === 'good';
+	})
+	...
+```
+
+property specific filters:
+
+```js
+	...
+	.filter({
+		type: function (type) {
+			return type === 'good';
+		}
+	})
+	...
+```
+
+## Transforms
 
 Get hot questions from stackoverflow with urls.
 
@@ -143,30 +167,6 @@ Or apply transform for specific field
 	.transform({
 		status: function (val) {
 			return 'status: ' + val.toLowerCase();
-		}
-	})
-	...
-```
-
-## Filter results
-
-Filters allows you to filter out redundant items from collection
-
-```js
-	...
-	.filter(function (item) {
-		return item.type === 'good';
-	})
-	...
-```
-
-property specific filters:
-
-```js
-	...
-	.filter({
-		type: function (type) {
-			return type === 'good';
 		}
 	})
 	...
